@@ -1,2 +1,1 @@
-def hello():
-    print("hello")
+from core import *

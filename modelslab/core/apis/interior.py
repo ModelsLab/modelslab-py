@@ -8,13 +8,22 @@ from modelslab.schemas.interior import (
 )
 from modelslab.core.client import Client
 import time
+from modelslab.core.apis.base import BaseAPI
 
-class Interior :
+class Interior(BaseAPI) :
 
-    def __init__(self,client : Client =None, **kwargs):
+    def __init__(self, client: Client = None, enterprise = False ,**kwargs):
         self.client = client
         self.kwargs = kwargs
-        self.base_url = self.client.base_url + "v6/interior/"
+        if not self.client:
+            raise ValueError("Client is required.")
+        self.enterprise = enterprise
+        if enterprise:
+            self.base_url = self.client.base_url + "v1/enterprise/interior/"
+        else:
+            self.base_url = self.client.base_url + "v6/interior/"
+
+        super().__init__()
         
     def interior(self,schema : InteriorSchema):
         base_endpoint = self.base_url + "make"
@@ -52,17 +61,3 @@ class Interior :
         response = self.client.post(base_endpoint, data=data)
         return response
     
-    def fetch(self, id : str):
-        base_endpoint = self.base_url + "fetch" + "/" + id
-        response = None
-        for i in range(self.client.fetch_retry):
-            response = self.client.post(base_endpoint, data={
-                "key" : self.client.api_key
-            })
-
-            if response["status"] == "success":
-                break
-            else:
-                time.sleep(self.client.fetch_timeout)
-        
-        return response

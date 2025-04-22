@@ -1,14 +1,9 @@
-from modelslab.schemas.deepfake import (
-    SingleVideoSwap,
-    SpecificFaceSwap,
-    MultipleFaceSwap,
-    SpecificVideoSwap
-)
 from modelslab.core.client import Client
 import time
 from modelslab.core.apis.base import BaseAPI 
+from modelslab.schemas.community import *
 
-class DeepFake(BaseAPI):
+class Community(BaseAPI):
 
     def __init__(self, client: Client = None, enterprise = False ,**kwargs):
         self.client = client
@@ -17,32 +12,32 @@ class DeepFake(BaseAPI):
             raise ValueError("Client is required.")
         self.enterprise = enterprise
         if enterprise:
-            self.base_url = self.client.base_url + "v1/enterprise/deepfake/"
+            self.base_url = self.client.base_url + "v1/enterprise/images/text2img/"
         else:
-            self.base_url = self.client.base_url + "v6/deepfake/"
+            self.base_url = self.client.base_url + "v6/images/text2img/"
 
         super().__init__()
 
-    def specific_face_swap(self, schema: SpecificFaceSwap):
-        base_endpoint = self.base_url + "single_face_swap"
-        data = schema.dict()
-        response = self.client.post(base_endpoint, data=data)
-        return response
-
-    def multiple_face_swap(self, schema: MultipleFaceSwap):
-        base_endpoint = self.base_url + "multiple_face_swap"
+    def text_to_image(self, schema: Text2Image):
+        base_endpoint = self.base_url + "text2img"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
     
-    def multiple_video_swap(self, schema: SpecificVideoSwap):
-        base_endpoint = self.base_url + "specific_video_swap"
+    def image_to_image(self, schema: Image2Image):
+        base_endpoint = self.base_url + "img2img"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
     
-    def single_video_swap(self, schema: SingleVideoSwap):
-        base_endpoint = self.base_url + "single_video_swap"
+    def inpainting(self, schema: Inpainting):
+        base_endpoint = self.base_url + "inpaint"
+        data = schema.dict()
+        response = self.client.post(base_endpoint, data=data)
+        return response
+    
+    def controlnet(self, schema: ControlNet):
+        base_endpoint = self.base_url + "controlnet"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response

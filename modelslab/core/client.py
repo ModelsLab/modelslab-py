@@ -14,11 +14,3 @@ class Client:
             if not api_key:
                 raise ValueError("API key is required.")
         return api_key
-    
-    def post(self, endpoint: str, data: dict):
-        # Placeholder for the actual POST request implementation
-        pass
-
-    def get(self, endpoint: str):   
-        # Placeholder for the actual GET request implementation
-        pass
