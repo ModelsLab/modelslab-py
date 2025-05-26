@@ -28,7 +28,7 @@ class SkechRendringSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale : Optional[int] = Field(
+    guidance_scale : Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -63,7 +63,7 @@ class InteriorSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale : Optional[int] = Field(
+    guidance_scale : Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -98,7 +98,7 @@ class RoomDecoratorSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale : Optional[int] = Field(
+    guidance_scale : Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -133,7 +133,7 @@ class FloorSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale : Optional[int] = Field(
+    guidance_scale : Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -168,7 +168,7 @@ class ExteriorSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale : Optional[int] = Field(
+    guidance_scale : Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -203,7 +203,7 @@ class ScenarioSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale : Optional[int] = Field(
+    guidance_scale : Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )

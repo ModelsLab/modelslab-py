@@ -24,18 +24,6 @@ class Image_editing(BaseAPI):
         response = self.client.post(base_endpoint, data=data)
         return response
     
-    def blip_diffusion(self, schema: BlipDiffusionSchema):
-        base_endpoint = self.base_url + "blip_diffusion"
-        data = schema.dict()
-        response = self.client.post(base_endpoint, data=data)
-        return response
-    
-    def magic_mixer(self, schema: MagicMixSchema):
-        base_endpoint = self.base_url + "magic_mix"
-        data = schema.dict()
-        response = self.client.post(base_endpoint, data=data)
-        return response
-    
     def background_remover(self, schema: BackgroundRemoverSchema):
         base_endpoint = self.base_url + "removebg_mask"
         data = schema.dict()

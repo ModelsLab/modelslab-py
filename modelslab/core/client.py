@@ -1,4 +1,5 @@
 import os
+import requests
 
 class Client:
     def __init__(self,api_key:str,fetch_retry:int=10,fetch_timeout:int=2):
@@ -14,3 +15,15 @@ class Client:
             if not api_key:
                 raise ValueError("API key is required.")
         return api_key
+    def post(self, endpoint: str, data: dict = None):
+        ## just do post request with data to endpoint
+        data = {"key": self.api_key, **(data or {})}
+        response = requests.post(
+            endpoint,
+            json=data,
+        )
+        if response.status_code != 200:
+            raise Exception(f"Request failed with status code {response.status_code}: {response.text}")
+        return response.json()
+    
+    

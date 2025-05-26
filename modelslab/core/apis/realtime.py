@@ -22,6 +22,7 @@ class Realtime(BaseAPI):
         base_endpoint = self.base_url + "text2img"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
+        print(response)
         return response
     
     def image_to_image(self, schema: RealtimeImage2ImageSchema):

@@ -265,7 +265,7 @@ class SongGenerator(BaseSchema):
         ...,
         description="Text prompt for song generation."
     )
-    lyrics = Optional[str] = Field(
+    lyrics : Optional[str] = Field(
         None,
         description="Lyrics for the song generation."
     )

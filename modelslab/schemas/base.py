@@ -19,10 +19,6 @@ class BaseSchema(BaseModel):
             Dict: lambda v: {str(k): str(v) for k, v in v.items()}
         }
 
-    api_key: str = Field(
-        ...,
-        description="API key for authentication."
-    )
     webhook: Optional[str] = Field(
         None,
         description="Webhook URL for receiving notifications."

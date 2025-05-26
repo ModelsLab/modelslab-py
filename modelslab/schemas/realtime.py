@@ -30,7 +30,7 @@ class RealtimeText2ImageSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale: Optional[int] = Field(
+    guidance_scale: Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -81,7 +81,7 @@ class RealtimeImage2ImageSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale: Optional[int] = Field(
+    guidance_scale: Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
@@ -134,7 +134,7 @@ class RealtimeInpaintingSchema(BaseSchema):
         None,
         description="Seed for random number generation."
     )
-    guidance_scale: Optional[int] = Field(
+    guidance_scale: Optional[float] = Field(
         None,
         description="Guidance scale for the generation."
     )
