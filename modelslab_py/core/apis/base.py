@@ -1,6 +1,6 @@
 import time
-from modelslab.core.client import Client
-from modelslab.schemas.base import BaseSchema
+from modelslab_py.core.client import Client
+from modelslab_py.schemas.base import BaseSchema
 from typing import Any, Dict, Optional
 from pydantic import Field
 

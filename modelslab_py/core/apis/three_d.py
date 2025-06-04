@@ -1,7 +1,7 @@
-from modelslab.schemas.threed import Text23D,Image23D
-from modelslab.core.client import Client
+from modelslab_py.schemas.threed import Text23D,Image23D
+from modelslab_py.core.client import Client
 import time
-from modelslab.core.apis.base import BaseAPI
+from modelslab_py.core.apis.base import BaseAPI
 
 class Three_D(BaseAPI) :
     def __init__(self, client: Client = None, enterprise = False ,**kwargs):

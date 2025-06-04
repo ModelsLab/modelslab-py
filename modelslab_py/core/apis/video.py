@@ -1,9 +1,9 @@
 
 
-from modelslab.core.client import Client
+from modelslab_py.core.client import Client
 import time
-from modelslab.schemas.video import Text2Video, Image2Video
-from modelslab.core.apis.base import BaseAPI
+from modelslab_py.schemas.video import Text2Video, Image2Video
+from modelslab_py.core.apis.base import BaseAPI
 
 
 class Video(BaseAPI):

@@ -21,4 +21,4 @@ jobs:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           ignore_dev_requirements: "yes"
           repository_url: https://upload.pypi.org/legacy/
-          repository_name: modelslab-py
+          repository_name: modelslab_py

@@ -1,4 +1,4 @@
-from modelslab.schemas.interior import (
+from modelslab_py.schemas.interior import (
     ExteriorSchema,
     ScenarioSchema,
     FloorSchema,
@@ -6,9 +6,9 @@ from modelslab.schemas.interior import (
     InteriorSchema
 
 )
-from modelslab.core.client import Client
+from modelslab_py.core.client import Client
 import time
-from modelslab.core.apis.base import BaseAPI
+from modelslab_py.core.apis.base import BaseAPI
 
 class Interior(BaseAPI) :
 

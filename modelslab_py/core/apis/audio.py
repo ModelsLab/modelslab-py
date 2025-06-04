@@ -1,7 +1,7 @@
-from modelslab.core.client import Client
+from modelslab_py.core.client import Client
 import time
-from modelslab.core.apis.base import BaseAPI 
-from modelslab.schemas.audio import *
+from modelslab_py.core.apis.base import BaseAPI 
+from modelslab_py.schemas.audio import *
 
 class Audio(BaseAPI):
 

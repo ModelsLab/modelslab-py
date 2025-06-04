@@ -1,5 +1,5 @@
 from typing import Optional, List, Dict, Any
-from modelslab.schemas.base import BaseSchema
+from modelslab_py.schemas.base import BaseSchema
 from pydantic import Field
 
 class RealtimeText2ImageSchema(BaseSchema):

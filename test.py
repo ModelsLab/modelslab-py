@@ -1,5 +1,5 @@
-from modelslab.core.client import Client
-from modelslab.schemas.interior import (
+from modelslab_py.core.client import Client
+from modelslab_py.schemas.interior import (
     ExteriorSchema,
     ScenarioSchema,
     FloorSchema,
@@ -7,13 +7,13 @@ from modelslab.schemas.interior import (
     InteriorSchema
 )
 
-from modelslab.schemas.realtime import RealtimeText2ImageSchema
-from modelslab.schemas.image_editing import BackgroundRemoverSchema
+from modelslab_py.schemas.realtime import RealtimeText2ImageSchema
+from modelslab_py.schemas.image_editing import BackgroundRemoverSchema
 
-from modelslab.core.apis.interior import Interior
-from modelslab.core.apis.realtime import Realtime
-from modelslab.core.apis.image_editing import Image_editing
-from modelslab.utils.image_utils import *
+from modelslab_py.core.apis.interior import Interior
+from modelslab_py.core.apis.realtime import Realtime
+from modelslab_py.core.apis.image_editing import Image_editing
+from modelslab_py.utils.image_utils import *
 
 client = Client(api_key="your api key ")
 # schema = RealtimeText2ImageSchema(
