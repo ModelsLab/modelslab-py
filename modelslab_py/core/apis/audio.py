@@ -61,7 +61,7 @@ class Audio(BaseAPI):
         return response
     
     def speech_to_text(self, schema: Speech2Text):
-        base_endpoint = "https://modelslab.com/api/v6/whisper/transcribe"
+        base_endpoint = self.base_url + "speech_to_text"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response

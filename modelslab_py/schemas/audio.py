@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Literal
 from modelslab_py.schemas.base import BaseSchema
 from pydantic import Field
 
@@ -63,6 +63,11 @@ class Text2Speech(BaseSchema):
     speed   : Optional[float] = Field(
         None,
         description="Speed of the speech generation."
+    )
+
+    output_format: Optional[Literal["wav", "mp3"]] = Field(
+        "wav",
+        description="The format of the generated audio. Either 'wav' or 'mp3'. Defaults to 'wav'."
     )
 
     emotion: Optional[str] = Field(
@@ -132,11 +137,6 @@ class VoiceCover(BaseSchema):
         None,
         description="Seed for the voice cover."
 
-    )
-
-    language: Optional[str] = Field(
-        None,
-        description="Language for the voice cover."
     )
 
     emotion : Optional[str] = Field(
@@ -226,10 +226,22 @@ class MusicGenSchema(BaseSchema):
         None,
         description="Initial audio for the music generation."
     )
+    
+    output_format: Optional[Literal["wav", "mp3", "flac"]] = Field(
+        "wav",
+        description="The format of the generated audio. Either 'wav', 'mp3', or 'flac'. Defaults to 'wav'."
+    )
+
+    bitrate: Optional[Literal["128k", "192k", "320k"]] = Field(
+        "320k",
+        description="Bitrate of the generated audio. Options: '128k', '192k', '320k' Defaults to `320k`."
+    )
+    
     base64: Optional[str] = Field(
         None,
         description="Base64 encoded audio data."
     )
+    
     temp   : Optional[float] = Field(
         None,
         description="Upload files in temp s3 directory for the audio generation."
@@ -284,7 +296,7 @@ class Speech2Text(BaseSchema):
         description="Input language for speech-to-text conversion."
     )
 
-    timestamp_level : Optional[str] = Field(
+    timestamp_level : Optional[Literal["word", "sentence"]] = Field(
         None,
         description="Timestamp level for speech-to-text conversion."
     )
@@ -298,6 +310,16 @@ class SFX(BaseSchema):
     duration : Optional[int] = Field(
         None,
         description="Duration for the sound effect generation."
+    )
+
+    output_format: Optional[Literal["wav", "mp3", "flac"]] = Field(
+        "wav",
+        description="The format of the generated audio. Either 'wav', 'mp3', or 'flac'. Defaults to 'wav'."
+    )
+
+    bitrate: Optional[Literal["128k", "192k", "320k"]] = Field(
+        "320k",
+        description="Bitrate of the generated audio. Options: '128k', '192k', '320k' Defaults to `320k`."
     )
 
     temp : Optional[bool]  = Field(
