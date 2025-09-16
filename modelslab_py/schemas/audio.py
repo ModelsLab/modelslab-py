@@ -229,12 +229,12 @@ class MusicGenSchema(BaseSchema):
     
     output_format: Optional[Literal["wav", "mp3", "flac"]] = Field(
         "wav",
-        description="The format of the generated audio. Either 'wav' or 'mp3'. Defaults to 'wav'."
+        description="The format of the generated audio. Either 'wav', 'mp3', or 'flac'. Defaults to 'wav'."
     )
 
     bitrate: Optional[Literal["128k", "192k", "320k"]] = Field(
         "320k",
-        description="The bitrate of the generated audio file defaults to 128k (128 kbps), higher the better but increases file size."
+        description="Bitrate of the generated audio. Options: '128k', '192k', '320k' Defaults to `320k`."
     )
     
     base64: Optional[str] = Field(
@@ -314,12 +314,12 @@ class SFX(BaseSchema):
 
     output_format: Optional[Literal["wav", "mp3", "flac"]] = Field(
         "wav",
-        description="The format of the generated audio. Either 'wav' or 'mp3'. Defaults to 'wav'."
+        description="The format of the generated audio. Either 'wav', 'mp3', or 'flac'. Defaults to 'wav'."
     )
 
     bitrate: Optional[Literal["128k", "192k", "320k"]] = Field(
         "320k",
-        description="The bitrate of the generated audio file defaults to 128k (128 kbps), higher the better but increases file size."
+        description="Bitrate of the generated audio. Options: '128k', '192k', '320k' Defaults to `320k`."
     )
 
     temp : Optional[bool]  = Field(
