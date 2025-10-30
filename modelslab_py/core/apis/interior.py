@@ -3,7 +3,9 @@ from modelslab_py.schemas.interior import (
     ScenarioSchema,
     FloorSchema,
     RoomDecoratorSchema,
-    InteriorSchema
+    InteriorSchema,
+    ObjectRemovalSchema,
+    InteriorMixerSchema
 
 )
 from modelslab_py.core.client import Client
@@ -60,4 +62,15 @@ class Interior(BaseAPI) :
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    def object_removal(self, schema: ObjectRemovalSchema):
+        base_endpoint = self.base_url + "object_removal"
+        data = schema.dict()
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    def interior_mixer(self, schema: InteriorMixerSchema):
+        base_endpoint = self.base_url + "interior_mixer"
+        data = schema.dict()
+        response = self.client.post(base_endpoint, data=data)
+        return response

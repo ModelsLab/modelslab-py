@@ -71,3 +71,15 @@ class Image_editing(BaseAPI):
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
+
+    def qwen_edit(self, schema: QwenEditSchema):
+        base_endpoint = self.base_url + "qwen_edit"
+        data = schema.dict()
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    def caption(self, schema: CaptionSchema):
+        base_endpoint = self.base_url + "caption"
+        data = schema.dict()
+        response = self.client.post(base_endpoint, data=data)
+        return response

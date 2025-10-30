@@ -2,7 +2,7 @@
 
 from modelslab_py.core.client import Client
 import time
-from modelslab_py.schemas.video import Text2Video, Image2Video
+from modelslab_py.schemas.video import Text2Video, Image2Video, WatermarkRemoverSchema
 from modelslab_py.core.apis.base import BaseAPI
 
 
@@ -28,6 +28,12 @@ class Video(BaseAPI):
 
     def image_to_video(self, schema: Image2Video):
         base_endpoint = self.base_url + "img2video"
+        data = schema.dict()
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    def watermark_remover(self, schema: WatermarkRemoverSchema):
+        base_endpoint = self.base_url + "watermark_remover"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response

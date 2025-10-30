@@ -157,3 +157,12 @@ class Text2VideoUltra(BaseSchema):
         None,
         description="Whether to apply sample shift."
     )
+
+class WatermarkRemoverSchema(BaseSchema):
+    """
+    Schema for watermark removal from videos.
+    """
+    init_video: str = Field(
+        ...,
+        description="URL of the initial video with watermark."
+    )
