@@ -215,3 +215,57 @@ class ScenarioSchema(BaseSchema):
         None,
         description="Scenario for the generation."
     )
+
+class ObjectRemovalSchema(BaseSchema):
+    """
+    Schema for object removal from images.
+    """
+    init_image: str = Field(
+        ...,
+        description="Image from which object will be removed."
+    )
+    object_name: str = Field(
+        ...,
+        description="Object name on the image that needs to be removed."
+    )
+    base64: Optional[bool] = Field(
+        False,
+        description="Whether to return the image as base64."
+    )
+
+class InteriorMixerSchema(BaseSchema):
+    """
+    Schema for interior mixer.
+    """
+    init_image: str = Field(
+        ...,
+        description="Room image in which object wants to be added."
+    )
+    object_image: str = Field(
+        ...,
+        description="Object which we want to add."
+    )
+    prompt: str = Field(
+        ...,
+        description="Prompt required for generation."
+    )
+    width: Optional[int] = Field(
+        None,
+        description="Width of output image. Min: 512, Max: 2048. If not provided, uses original image resolution."
+    )
+    height: Optional[int] = Field(
+        None,
+        description="Height of the output image. Min: 512, Max: 2048. If not provided, uses original image resolution."
+    )
+    guidance_scale: Optional[int] = Field(
+        None,
+        description="The scale for classifier-free guidance."
+    )
+    num_inference_steps: Optional[int] = Field(
+        8,
+        description="Number of inference steps required for generation."
+    )
+    base64: Optional[bool] = Field(
+        False,
+        description="Whether to return the image as base64."
+    )

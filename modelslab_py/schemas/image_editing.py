@@ -455,7 +455,7 @@ class FluxHeadshotSchema(BaseSchema):
         description="Number of samples for the face generation."
     )
     safety_checker: Optional[bool] = Field(
-        True,   
+        True,
         description="Whether to use safety checker."
     )
     safety_checker_type: Optional[str] = Field(
@@ -469,4 +469,38 @@ class FluxHeadshotSchema(BaseSchema):
     style: Optional[str] = Field(
         "realistic",
         description="Style of the face generation."
+    )
+
+class QwenEditSchema(BaseSchema):
+    """
+    Schema for Qwen Edit.
+    """
+    prompt: str = Field(
+        ...,
+        description="The text prompt describing the content you want in the generated image."
+    )
+    init_image: List[str] = Field(
+        ...,
+        description="Link the image you want your generations to edit and manipulate."
+    )
+    base64: Optional[bool] = Field(
+        False,
+        description="Whether to return the image as base64."
+    )
+
+class CaptionSchema(BaseSchema):
+    """
+    Schema for image caption generation.
+    """
+    init_image: str = Field(
+        ...,
+        description="Link the image you want your generate prompt from. Available formats: `png`, `jpeg`, `jpg`"
+    )
+    length: Optional[str] = Field(
+        "normal",
+        description="The length of the caption."
+    )
+    base64: Optional[bool] = Field(
+        False,
+        description="Whether to return the image as base64."
     )
