@@ -12,9 +12,9 @@ class Community(BaseAPI):
             raise ValueError("Client is required.")
         self.enterprise = enterprise
         if enterprise:
-            self.base_url = self.client.base_url + "v1/enterprise/images/text2img/"
+            self.base_url = self.client.base_url + "v1/enterprise/images/"
         else:
-            self.base_url = self.client.base_url + "v6/images/text2img/"
+            self.base_url = self.client.base_url + "v6/images/"
 
         super().__init__()
 
