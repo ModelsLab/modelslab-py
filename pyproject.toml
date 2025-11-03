@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "modelslab_py"
-version = "0.1.3"
+version = "0.1.4"
 description = ""
 authors = ["Tanmay patil <tanmaypatil3151@gmail.com>", "Anurag Kanade <anuragkanade54@gmail.com>"]
 readme = "README.md"
