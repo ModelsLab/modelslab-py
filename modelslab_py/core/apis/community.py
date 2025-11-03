@@ -20,24 +20,24 @@ class Community(BaseAPI):
 
     def text_to_image(self, schema: Text2Image):
         base_endpoint = self.base_url + "text2img"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
     
     def image_to_image(self, schema: Image2Image):
         base_endpoint = self.base_url + "img2img"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
     
     def inpainting(self, schema: Inpainting):
         base_endpoint = self.base_url + "inpaint"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
     
     def controlnet(self, schema: ControlNet):
         base_endpoint = self.base_url + "controlnet"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
