@@ -41,3 +41,11 @@ class Community(BaseAPI):
         data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
+
+    def qwen_text_to_image(self, schema: QwenText2Image):
+        if not self.enterprise:
+            raise ValueError("Qwen API is only available for enterprise users.")
+        base_endpoint = self.client.base_url + "v1/enterprise/qwen/text2img"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(base_endpoint, data=data)
+        return response

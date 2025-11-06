@@ -355,3 +355,28 @@ class ControlNet(BaseSchema):
         None,
         description="Strength of the ControlNet model."
     )
+
+class QwenText2Image(BaseSchema):
+    """
+    Schema for Qwen text-to-image generation.
+    """
+    prompt: str = Field(
+        ...,
+        description="Text prompt for image generation."
+    )
+    negative_prompt: Optional[str] = Field(
+        None,
+        description="Negative prompt for image generation."
+    )
+    width: Optional[int] = Field(
+        512,
+        description="Width of the generated image (max 1024)."
+    )
+    height: Optional[int] = Field(
+        512,
+        description="Height of the generated image (max 1024)."
+    )
+    samples: Optional[int] = Field(
+        1,
+        description="Number of images to generate (1-2)."
+    )
