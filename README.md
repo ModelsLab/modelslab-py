@@ -24,12 +24,12 @@ Official Python SDK for ModelsLab API - Generate AI content including images, vi
 pip install modelslab_py
 ```
 
-## Quick Start
+## Create a client.
 
 ```python
 from modelslab_py.core.client import Client
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 ```
 
 ## Features
@@ -51,7 +51,7 @@ from modelslab_py.core.client import Client
 from modelslab_py.core.apis.image_editing import Image_editing
 from modelslab_py.schemas.image_editing import BackgroundRemoverSchema
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 api = Image_editing(client=client, enterprise=False)
 
 schema = BackgroundRemoverSchema(
@@ -69,7 +69,7 @@ print(response)
 from modelslab_py.core.apis.video import Video
 from modelslab_py.schemas.video import Text2Video
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 api = Video(client=client, enterprise=False)
 
 schema = Text2Video(
@@ -88,7 +88,7 @@ print(response)
 from modelslab_py.core.apis.interior import Interior
 from modelslab_py.schemas.interior import InteriorSchema
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 api = Interior(client=client, enterprise=False)
 
 schema = InteriorSchema(
@@ -106,7 +106,7 @@ print(response)
 from modelslab_py.core.apis.audio import Audio
 from modelslab_py.schemas.audio import Text2Speech
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 api = Audio(client=client, enterprise=False)
 
 schema = Text2Speech(
@@ -125,7 +125,7 @@ print(response)
 from modelslab_py.core.apis.three_d import Three_D
 from modelslab_py.schemas.threed import Text23D
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 api = Three_D(client=client, enterprise=False)
 
 schema = Text23D(
@@ -144,7 +144,7 @@ print(response)
 from modelslab_py.core.apis.community import Community
 from modelslab_py.schemas.community import Text2Image
 
-client = Client(api_key="your-api-key")
+client = Client(api_key="your_api_key")
 api = Community(client=client, enterprise=False)
 
 schema = Text2Image(
