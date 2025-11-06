@@ -258,10 +258,15 @@ class MusicGenSchema(BaseSchema):
 
 
 class LyricsGenerator(BaseSchema):
-    prompt: str = Field(\
+    prompt: str = Field(
         ...,
         description="Text prompt for lyrics generation."
     )
+    length: Optional[str] = Field(
+        None,
+        description="Length of the generated lyrics."
+    )
+
 
 
 class SongGenerator(BaseSchema):
@@ -276,6 +281,10 @@ class SongGenerator(BaseSchema):
     prompt: str = Field(
         ...,
         description="Text prompt for song generation."
+    )
+    model_id: Optional[str] = Field(
+        None,
+        description="Model ID for the song generation."
     )
     lyrics : Optional[str] = Field(
         None,
