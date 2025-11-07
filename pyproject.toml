@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "modelslab_py"
-version = "0.1.6"
-description = ""
-authors = ["Tanmay patil <tanmaypatil3151@gmail.com>", "Anurag Kanade <anuragkanade54@gmail.com>"]
+version = "0.1.7"
+description = "ModelsLab's Official Python SDK"
+authors = [
+    "Tanmay Patil <tanmaypatil3151@gmail.com>",
+    "Anurag Kanade <anuragkanade54@gmail.com>"
+]
 readme = "README.md"
 
 [tool.poetry.dependencies]
