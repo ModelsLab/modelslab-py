@@ -20,38 +20,38 @@ class Realtime(BaseAPI):
 
     def text_to_image(self, schema: RealtimeText2ImageSchema):
         base_endpoint = self.base_url + "text2img"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         print(response)
         return response
 
     async def async_text_to_image(self, schema: RealtimeText2ImageSchema):
         base_endpoint = self.base_url + "text2img"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = await self.client.async_post(base_endpoint, data=data)
         print(response)
         return response
 
     def image_to_image(self, schema: RealtimeImage2ImageSchema):
         base_endpoint = self.base_url + "img2img"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
 
     async def async_image_to_image(self, schema: RealtimeImage2ImageSchema):
         base_endpoint = self.base_url + "img2img"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = await self.client.async_post(base_endpoint, data=data)
         return response
 
     def inpainting(self, schema: RealtimeInpaintingSchema):
         base_endpoint = self.base_url + "inpaint"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
 
     async def async_inpainting(self, schema: RealtimeInpaintingSchema):
         base_endpoint = self.base_url + "inpaint"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = await self.client.async_post(base_endpoint, data=data)
         return response
