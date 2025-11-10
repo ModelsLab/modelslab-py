@@ -1,4 +1,5 @@
 import time
+import asyncio
 from modelslab_py.core.client import Client
 from modelslab_py.schemas.base import BaseSchema
 from typing import Any, Dict, Optional
@@ -14,7 +15,7 @@ class BaseAPI:
     enterprise : bool = False
     base_url : str = None
     kwargs : Dict[str, Any] = None
-    
+
     def __init__(self):
         """
         Initialize the BaseAPI instance.
@@ -35,55 +36,114 @@ class BaseAPI:
                 time.sleep(self.client.fetch_timeout)
 
         return response
-    
+
+    async def async_fetch(self, id: str):
+        base_endpoint = self.base_url + "fetch" + "/" + id
+        response = None
+        for i in range(self.client.fetch_retry):
+            response = await self.client.async_post(base_endpoint, data={
+                "key": self.client.api_key
+            })
+
+            if response["status"] == "success":
+                break
+            else:
+                await asyncio.sleep(self.client.fetch_timeout)
+
+        return response
+
     def system_details(self):
         if  not self.enterprise:
             raise ValueError("System details are only available for enterprise users.")
-        
+
         base_endpoint = self.base_url + "system_details"
         response = self.client.post(base_endpoint, data={
             "key": self.client.api_key
         })
 
         return response
-    
+
+    async def async_system_details(self):
+        if  not self.enterprise:
+            raise ValueError("System details are only available for enterprise users.")
+
+        base_endpoint = self.base_url + "system_details"
+        response = await self.client.async_post(base_endpoint, data={
+            "key": self.client.api_key
+        })
+
+        return response
+
     def restart(self):
         if  not self.enterprise:
             raise ValueError("System details are only available for enterprise users.")
-        
+
         base_endpoint = self.base_url + "restart_server"
         response = self.client.post(base_endpoint, data={
             "key": self.client.api_key
         })
 
         return response
-    
+
+    async def async_restart(self):
+        if  not self.enterprise:
+            raise ValueError("System details are only available for enterprise users.")
+
+        base_endpoint = self.base_url + "restart_server"
+        response = await self.client.async_post(base_endpoint, data={
+            "key": self.client.api_key
+        })
+
+        return response
+
     def update(self):
         if  not self.enterprise:
             raise ValueError("System details are only available for enterprise users.")
-        
+
         base_endpoint = self.base_url + "update"
         response = self.client.post(base_endpoint, data={
             "key": self.client.api_key
         })
 
         return response
-    
+
+    async def async_update(self):
+        if  not self.enterprise:
+            raise ValueError("System details are only available for enterprise users.")
+
+        base_endpoint = self.base_url + "update"
+        response = await self.client.async_post(base_endpoint, data={
+            "key": self.client.api_key
+        })
+
+        return response
+
     def clear_cache(self):
         if  not self.enterprise:
             raise ValueError("System details are only available for enterprise users.")
-        
+
         base_endpoint = self.base_url + "clear_cache"
         response = self.client.post(base_endpoint, data={
             "key": self.client.api_key
         })
 
         return response
-    
+
+    async def async_clear_cache(self):
+        if  not self.enterprise:
+            raise ValueError("System details are only available for enterprise users.")
+
+        base_endpoint = self.base_url + "clear_cache"
+        response = await self.client.async_post(base_endpoint, data={
+            "key": self.client.api_key
+        })
+
+        return response
+
     def clear_queue(self):
         if  not self.enterprise:
             raise ValueError("System details are only available for enterprise users.")
-        
+
         base_endpoint = self.base_url + "clear_queue"
         response = self.client.post(base_endpoint, data={
             "key": self.client.api_key
@@ -91,4 +151,14 @@ class BaseAPI:
 
         return response
 
-    
+    async def async_clear_queue(self):
+        if  not self.enterprise:
+            raise ValueError("System details are only available for enterprise users.")
+
+        base_endpoint = self.base_url + "clear_queue"
+        response = await self.client.async_post(base_endpoint, data={
+            "key": self.client.api_key
+        })
+
+        return response
+

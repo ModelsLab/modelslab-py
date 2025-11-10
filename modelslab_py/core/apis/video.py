@@ -22,18 +22,36 @@ class Video(BaseAPI):
 
     def text_to_video(self, schema: Text2Video):
         base_endpoint = self.base_url + "text2video"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_text_to_video(self, schema: Text2Video):
+        base_endpoint = self.base_url + "text2video"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
         return response
 
     def image_to_video(self, schema: Image2Video):
         base_endpoint = self.base_url + "img2video"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_image_to_video(self, schema: Image2Video):
+        base_endpoint = self.base_url + "img2video"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
         return response
 
     def watermark_remover(self, schema: WatermarkRemoverSchema):
         base_endpoint = self.base_url + "watermark_remover"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_watermark_remover(self, schema: WatermarkRemoverSchema):
+        base_endpoint = self.base_url + "watermark_remover"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
         return response

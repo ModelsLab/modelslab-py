@@ -19,12 +19,24 @@ class Three_D(BaseAPI) :
 
     def text_to_3d(self,schema : Text23D):
         base_endpoint = self.base_url + "text_to_3d"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_text_to_3d(self,schema : Text23D):
+        base_endpoint = self.base_url + "text_to_3d"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def image_to_3d(self,schema : Image23D):
         base_endpoint = self.base_url + "image_to_3d"
-        data = schema.dict()
+        data = schema.dict(exclude_none=True)
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_image_to_3d(self,schema : Image23D):
+        base_endpoint = self.base_url + "image_to_3d"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
         return response

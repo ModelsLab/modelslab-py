@@ -24,7 +24,12 @@ Official Python SDK for ModelsLab API - Generate AI content including images, vi
 pip install modelslab_py
 ```
 
-## Create a client.
+For async support:
+```bash
+pip install 'modelslab_py[async]'
+```
+
+## Create a client
 
 ```python
 from modelslab_py.core.client import Client
@@ -157,6 +162,54 @@ schema = Text2Image(
 response = api.text_to_image(schema=schema)
 print(response)
 ```
+
+## Async/Await Support
+
+All API methods have async equivalents. Use them for concurrent requests and better performance.
+
+### Async Example with Concurrent Requests
+
+```python
+import asyncio
+from modelslab_py.core.client import Client
+from modelslab_py.core.apis.video import Video
+from modelslab_py.schemas.video import Text2Video
+
+schema1 = Text2Video(
+    model_id="wan2.2",
+    prompt="a cat walking",
+    num_frames=25,
+    fps=16
+)
+
+schema2 = Text2Video(
+    model_id="wan2.2",
+    prompt="a dog running",
+    num_frames=25,
+    fps=16
+)
+
+async def main():
+    async with Client(api_key="your_api_key") as client:
+        api = Video(client=client, enterprise=False)
+
+        # Run both requests concurrently
+        results = await asyncio.gather(
+            api.async_text_to_video(schema=schema1),
+            api.async_text_to_video(schema=schema2),
+        )
+
+        print(results)
+
+asyncio.run(main())
+```
+
+### Async Method Naming Convention
+
+For any synchronous method, prefix with `async_`:
+- `text_to_video()` → `async_text_to_video()`
+- `text_to_image()` → `async_text_to_image()`
+- `background_remover()` → `async_background_remover()`
 
 ## API Categories
 
