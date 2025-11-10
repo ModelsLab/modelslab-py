@@ -1,5 +1,9 @@
 import os
 import requests
+try:
+    import aiohttp
+except ImportError:
+    aiohttp = None
 
 class Client:
     def __init__(self,api_key:str,fetch_retry:int=10,fetch_timeout:int=2):
@@ -7,6 +11,7 @@ class Client:
         self.base_url = "https://modelslab.com/api/"
         self.fetch_retry = fetch_retry
         self.fetch_timeout = fetch_timeout
+        self._session = None
 
     def _load_api_key(self, api_key: str) -> str:
 
@@ -15,6 +20,7 @@ class Client:
             if not api_key:
                 raise ValueError("API key is required.")
         return api_key
+
     def post(self, endpoint: str, data: dict = None):
         ## just do post request with data to endpoint
         data = {"key": self.api_key, **(data or {})}
@@ -25,5 +31,26 @@ class Client:
         if response.status_code != 200:
             raise Exception(f"Request failed with status code {response.status_code}: {response.text}")
         return response.json()
-    
-    
+
+    async def async_post(self, endpoint: str, data: dict = None):
+        if aiohttp is None:
+            raise ImportError("aiohttp is required for async support. Install with: pip install 'modelslab-py[async]'")
+        data = {"key": self.api_key, **(data or {})}
+        if self._session is None:
+            self._session = aiohttp.ClientSession()
+        async with self._session.post(endpoint, json=data) as response:
+            if response.status != 200:
+                text = await response.text()
+                raise Exception(f"Request failed with status code {response.status}: {text}")
+            return await response.json()
+
+    async def close(self):
+        if self._session:
+            await self._session.close()
+            self._session = None
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.close()

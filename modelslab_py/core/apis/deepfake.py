@@ -29,20 +29,44 @@ class DeepFake(BaseAPI):
         response = self.client.post(base_endpoint, data=data)
         return response
 
+    async def async_specific_face_swap(self, schema: SpecificFaceSwap):
+        base_endpoint = self.base_url + "single_face_swap"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def multiple_face_swap(self, schema: MultipleFaceSwap):
         base_endpoint = self.base_url + "multiple_face_swap"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_multiple_face_swap(self, schema: MultipleFaceSwap):
+        base_endpoint = self.base_url + "multiple_face_swap"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def multiple_video_swap(self, schema: SpecificVideoSwap):
         base_endpoint = self.base_url + "specific_video_swap"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_multiple_video_swap(self, schema: SpecificVideoSwap):
+        base_endpoint = self.base_url + "specific_video_swap"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def single_video_swap(self, schema: SingleVideoSwap):
         base_endpoint = self.base_url + "single_video_swap"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_single_video_swap(self, schema: SingleVideoSwap):
+        base_endpoint = self.base_url + "single_video_swap"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
         return response

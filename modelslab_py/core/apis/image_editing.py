@@ -23,53 +23,107 @@ class Image_editing(BaseAPI):
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_outpainting(self, schema: OutpaintingSchema):
+        base_endpoint = self.base_url + "outpaint"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def background_remover(self, schema: BackgroundRemoverSchema):
         base_endpoint = self.base_url + "removebg_mask"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_background_remover(self, schema: BackgroundRemoverSchema):
+        base_endpoint = self.base_url + "removebg_mask"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def super_resolution(self, schema: SuperResolutionSchema):
         base_endpoint = self.base_url + "super_resolution"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_super_resolution(self, schema: SuperResolutionSchema):
+        base_endpoint = self.base_url + "super_resolution"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def fashion(self, schema: FashionSchema):
         base_endpoint = self.base_url + "fashion"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_fashion(self, schema: FashionSchema):
+        base_endpoint = self.base_url + "fashion"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def object_remover(self, schema: ObjectRemovalSchema):
         base_endpoint = self.base_url + "object_removal"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_object_remover(self, schema: ObjectRemovalSchema):
+        base_endpoint = self.base_url + "object_removal"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def facegen(self, schema: FacegenSchema):
         base_endpoint = self.base_url + "face_gen"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_facegen(self, schema: FacegenSchema):
+        base_endpoint = self.base_url + "face_gen"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def inpainting(self, schema: InpaintingSchema):
         base_endpoint = self.base_url + "inpaint"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_inpainting(self, schema: InpaintingSchema):
+        base_endpoint = self.base_url + "inpaint"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def headshot(self, schema: HeadshotSchema):
         base_endpoint = self.base_url + "head_shot"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_headshot(self, schema: HeadshotSchema):
+        base_endpoint = self.base_url + "head_shot"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def flux_headshot(self, schema: FluxHeadshotSchema):
         base_endpoint = self.base_url + "flux_headshot"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_flux_headshot(self, schema: FluxHeadshotSchema):
+        base_endpoint = self.base_url + "flux_headshot"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
         return response
 
     def qwen_edit(self, schema: QwenEditSchema):
@@ -78,8 +132,20 @@ class Image_editing(BaseAPI):
         response = self.client.post(base_endpoint, data=data)
         return response
 
+    async def async_qwen_edit(self, schema: QwenEditSchema):
+        base_endpoint = self.base_url + "qwen_edit"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def caption(self, schema: CaptionSchema):
         base_endpoint = self.base_url + "caption"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_caption(self, schema: CaptionSchema):
+        base_endpoint = self.base_url + "caption"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
         return response

@@ -32,11 +32,23 @@ class Interior(BaseAPI) :
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_interior(self,schema : InteriorSchema):
+        base_endpoint = self.base_url + "make"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def room_decorator(self,schema : RoomDecoratorSchema):
         base_endpoint = self.base_url + "room_decorator"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_room_decorator(self,schema : RoomDecoratorSchema):
+        base_endpoint = self.base_url + "room_decorator"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
         return response
 
     def floor(self,schema : FloorSchema):
@@ -44,23 +56,35 @@ class Interior(BaseAPI) :
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_floor(self,schema : FloorSchema):
+        base_endpoint = self.base_url + "floor_planning"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def scenario(self,schema : ScenarioSchema):
         base_endpoint = self.base_url + "scenario"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
+
+    async def async_scenario(self,schema : ScenarioSchema):
+        base_endpoint = self.base_url + "scenario"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def exterior_restorer(self,schema : ExteriorSchema):
         base_endpoint = self.base_url + "exterior_restorer"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
         return response
-    
-    def room_decorator(self,schema : RoomDecoratorSchema):
-        base_endpoint = self.base_url + "room_decorator"
+
+    async def async_exterior_restorer(self,schema : ExteriorSchema):
+        base_endpoint = self.base_url + "exterior_restorer"
         data = schema.dict()
-        response = self.client.post(base_endpoint, data=data)
+        response = await self.client.async_post(base_endpoint, data=data)
         return response
 
     def object_removal(self, schema: ObjectRemovalSchema):
@@ -69,8 +93,20 @@ class Interior(BaseAPI) :
         response = self.client.post(base_endpoint, data=data)
         return response
 
+    async def async_object_removal(self, schema: ObjectRemovalSchema):
+        base_endpoint = self.base_url + "object_removal"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
     def interior_mixer(self, schema: InteriorMixerSchema):
         base_endpoint = self.base_url + "interior_mixer"
         data = schema.dict()
         response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_interior_mixer(self, schema: InteriorMixerSchema):
+        base_endpoint = self.base_url + "interior_mixer"
+        data = schema.dict()
+        response = await self.client.async_post(base_endpoint, data=data)
         return response
