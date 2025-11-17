@@ -1,7 +1,6 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/925d5d81-780a-44f6-81e9-3093cdce7363" alt="new one" />
 </p>
-
 <div align="center">
   <a href="https://discord.gg/ujtGyjY2">
     <img src="https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
@@ -11,6 +10,9 @@
   </a>
   <a href="https://github.com/ModelsLab">
     <img src="https://img.shields.io/badge/GitHub-ModelsLab-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://pepy.tech/projects/modelslab-py">
+    <img src="https://static.pepy.tech/personalized-badge/modelslab-py?period=total&units=international_system&left_color=black&right_color=green&left_text=downloads" alt="PyPI Downloads">
   </a>
 </div>
 
