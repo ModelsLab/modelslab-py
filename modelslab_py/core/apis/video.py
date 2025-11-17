@@ -2,7 +2,7 @@
 
 from modelslab_py.core.client import Client
 import time
-from modelslab_py.schemas.video import Text2Video, Image2Video, WatermarkRemoverSchema
+from modelslab_py.schemas.video import Text2Video, Image2Video, Text2VideoUltra, Image2VideoUltra, WatermarkRemoverSchema
 from modelslab_py.core.apis.base import BaseAPI
 
 
@@ -52,6 +52,42 @@ class Video(BaseAPI):
 
     async def async_watermark_remover(self, schema: WatermarkRemoverSchema):
         base_endpoint = self.base_url + "watermark_remover"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
+    def text_to_video_ultra(self, schema: Text2VideoUltra):
+        if self.enterprise:
+            base_endpoint = self.client.base_url + "v1/enterprise/ultra_video/text2video"
+        else:
+            base_endpoint = self.base_url + "text2video_ultra"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_text_to_video_ultra(self, schema: Text2VideoUltra):
+        if self.enterprise:
+            base_endpoint = self.client.base_url + "v1/enterprise/ultra_video/text2video"
+        else:
+            base_endpoint = self.base_url + "text2video_ultra"
+        data = schema.dict(exclude_none=True)
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
+    def image_to_video_ultra(self, schema: Image2VideoUltra):
+        if self.enterprise:
+            base_endpoint = self.client.base_url + "v1/enterprise/image_to_video_ultra/img2video"
+        else:
+            base_endpoint = self.base_url + "img2video_ultra"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_image_to_video_ultra(self, schema: Image2VideoUltra):
+        if self.enterprise:
+            base_endpoint = self.client.base_url + "v1/enterprise/image_to_video_ultra/img2video"
+        else:
+            base_endpoint = self.base_url + "img2video_ultra"
         data = schema.dict(exclude_none=True)
         response = await self.client.async_post(base_endpoint, data=data)
         return response
