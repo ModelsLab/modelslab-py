@@ -213,6 +213,99 @@ For any synchronous method, prefix with `async_`:
 - `text_to_image()` → `async_text_to_image()`
 - `background_remover()` → `async_background_remover()`
 
+## Provider-Based API Usage
+
+The SDK includes provider-specific implementations for easy access to various AI models:
+
+### Minimax Provider (Video Generation)
+
+```python
+from modelslab_py.core.client import Client
+from modelslab_py.providers import MinimaxProvider
+from modelslab_py.providers.minimax.schemas import Hailuo23T2VSchema
+
+client = Client(api_key="your_api_key")
+minimax = MinimaxProvider(client=client)
+
+schema = Hailuo23T2VSchema(
+    prompt="A sunset aerial shot of a lone rider galloping across a snow-covered plain"
+)
+
+response = minimax.hailuo_23_t2v(schema=schema)
+print(response)
+```
+
+### BFL Provider (Image Generation)
+
+```python
+from modelslab_py.providers import BFLProvider
+from modelslab_py.providers.bfl.schemas import FluxPro11Schema
+
+client = Client(api_key="your_api_key")
+bfl = BFLProvider(client=client)
+
+schema = FluxPro11Schema(
+    prompt="A futuristic cityscape at sunset with flying cars",
+    width=1024,
+    height=768
+)
+
+response = bfl.flux_pro_11(schema=schema)
+print(response)
+```
+
+### KlingAI Provider (Video Generation)
+
+```python
+from modelslab_py.providers import KlingAIProvider
+from modelslab_py.providers.klingai.schemas import KlingV25TurboT2VSchema
+
+client = Client(api_key="your_api_key")
+kling = KlingAIProvider(client=client)
+
+schema = KlingV25TurboT2VSchema(
+    prompt="Cinematic drone shot of a luxury cruise ship sailing",
+    duration="5",
+    aspect_ratio="16:9"
+)
+
+response = kling.kling_v25_turbo_t2v(schema=schema)
+print(response)
+```
+
+### Sync Provider (Lip Sync)
+
+```python
+from modelslab_py.providers import SyncProvider
+from modelslab_py.providers.sync.schemas import Lipsync2Schema
+
+client = Client(api_key="your_api_key")
+sync = SyncProvider(client=client)
+
+schema = Lipsync2Schema(
+    init_video="https://example.com/video.mp4",
+    init_audio="https://example.com/audio.mp3"
+)
+
+response = sync.lipsync_2(schema=schema)
+print(response)
+```
+
+### Available Providers
+
+- **AlibabaProvider**: Wan2.5 video generation models
+- **BFLProvider**: Flux Pro image generation models
+- **BytePlusProvider**: SeeDream, SeeDance, and Omni Human models
+- **ElevenLabsProvider**: Text-to-speech and audio generation
+- **GoogleProvider**: Imagen models for image generation
+- **InworldProvider**: Text-to-speech with voice cloning
+- **KlingAIProvider**: Kling video generation models
+- **MinimaxProvider**: Hailuo video generation models
+- **OpenAIProvider**: Sora video generation
+- **RunwayProvider**: Gen-4 image and video models
+- **SonautoProvider**: Music and song generation
+- **SyncProvider**: Video lip-sync models
+
 ## API Categories
 
 - **Image Editing**: Background removal, super resolution, inpainting, outpainting
