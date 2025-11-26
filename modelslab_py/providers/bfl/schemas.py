@@ -129,3 +129,41 @@ class FluxKontextProSchema(BaseSchema):
         None,
         description="Image dimension options: 21:9, 16:9, 4:3, 3:2, 1:1, 2:3, 3:4, 9:16, 9:21"
     )
+
+
+class Flux2ProSchema(BaseSchema):
+    """Schema for Flux 2 Pro (flux-2-pro)"""
+
+    model_id: str = Field(
+        default="flux-2-pro",
+        description="Model ID: flux-2-pro"
+    )
+    prompt: str = Field(
+        ...,
+        description="Text description for image generation"
+    )
+    width: int = Field(
+        ...,
+        description="Image width (512-1024 pixels)"
+    )
+    height: int = Field(
+        ...,
+        description="Image height (512-1024 pixels)"
+    )
+
+
+class Flux2ProImageEditingSchema(BaseSchema):
+    """Schema for Flux 2 Pro Image Editing (flux-2-pro)"""
+
+    model_id: str = Field(
+        default="flux-2-pro",
+        description="Model ID: flux-2-pro"
+    )
+    init_image: Any = Field(
+        ...,
+        description="Reference image URLs in JPEG, PNG format. Can add up to 10 images"
+    )
+    prompt: str = Field(
+        ...,
+        description="Text prompt for the type of image you want to generate"
+    )
