@@ -6,7 +6,9 @@ from modelslab_py.providers.google.schemas import (
     Imagen40FastGenerateSchema,
     Imagen40UltraSchema,
     NanoBananaT2ISchema,
-    NanoBananaSchema
+    NanoBananaSchema,
+    NanoBananaProSchema,
+    NanoBananaProImageEditSchema
 )
 
 
@@ -18,6 +20,7 @@ class GoogleProvider(BaseAPI):
     MODEL_IMAGEN_40_ULTRA = "imagen-4.0-ultra"
     MODEL_NANO_BANANA_T2I = "nano-banana-t2i"
     MODEL_NANO_BANANA = "nano-banana"
+    MODEL_NANO_BANANA_PRO = "nano-banana-pro"
 
     def __init__(self, client: Client = None, **kwargs):
         self.client = client
@@ -35,6 +38,7 @@ class GoogleProvider(BaseAPI):
             "imagen_40_ultra": GoogleProvider.MODEL_IMAGEN_40_ULTRA,
             "nano_banana_t2i": GoogleProvider.MODEL_NANO_BANANA_T2I,
             "nano_banana": GoogleProvider.MODEL_NANO_BANANA,
+            "nano_banana_pro": GoogleProvider.MODEL_NANO_BANANA_PRO,
         }
 
     def imagen_4(self, schema: Imagen4Schema):
@@ -74,6 +78,20 @@ class GoogleProvider(BaseAPI):
 
     def nano_banana(self, schema: NanoBananaSchema):
         """Image-to-Image: Blend or modify images with Nano Banana"""
+        endpoint = self.client.base_url + "v7/images/image-to-image"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(endpoint, data=data)
+        return response
+
+    def nano_banana_pro(self, schema: NanoBananaProSchema):
+        """Text-to-Image: Generate high-fidelity images with Nano Banana Pro"""
+        endpoint = self.client.base_url + "v7/images/text-to-image"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(endpoint, data=data)
+        return response
+
+    def nano_banana_pro_image_edit(self, schema: NanoBananaProImageEditSchema):
+        """Image-to-Image: Edit up to 14 images with Nano Banana Pro"""
         endpoint = self.client.base_url + "v7/images/image-to-image"
         data = schema.dict(exclude_none=True)
         response = self.client.post(endpoint, data=data)

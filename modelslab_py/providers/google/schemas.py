@@ -103,3 +103,41 @@ class NanoBananaSchema(BaseSchema):
         ...,
         description="URL or file of second input image"
     )
+
+
+class NanoBananaProSchema(BaseSchema):
+    """Schema for Google Nano Banana Pro Text-to-Image (nano-banana-pro)"""
+
+    model_id: str = Field(
+        default="nano-banana-pro",
+        description="Model ID: nano-banana-pro"
+    )
+    prompt: str = Field(
+        ...,
+        description="Text description for image generation"
+    )
+    aspect_ratio: Optional[str] = Field(
+        None,
+        description="Image aspect ratio"
+    )
+
+
+class NanoBananaProImageEditSchema(BaseSchema):
+    """Schema for Google Nano Banana Pro Image Edit (nano-banana-pro)"""
+
+    model_id: str = Field(
+        default="nano-banana-pro",
+        description="Model ID: nano-banana-pro"
+    )
+    prompt: str = Field(
+        ...,
+        description="Describe in text how the image that need to be generated should appear"
+    )
+    init_image: Any = Field(
+        ...,
+        description="You can edit up to 14 images in single generation"
+    )
+    aspect_ratio: Optional[str] = Field(
+        None,
+        description="Image aspect ratio"
+    )
