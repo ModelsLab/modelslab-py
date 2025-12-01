@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "modelslab_py"
-version = "0.2.1"
+version = "0.2.2"
 description = "ModelsLab's Official Python SDK"
 authors = [
-    "Tanmay Patil <tanmaypatil3151@gmail.com>",
-    "Anurag Kanade <anuragkanade54@gmail.com>"
+    "Anurag Kanade <anuragkanade54@gmail.com>",
+    "Tanmay Patil <tanmaypatil3151@gmail.com>"
 ]
 readme = "README.md"
 

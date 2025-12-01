@@ -27,9 +27,11 @@ class Client:
     def post(self, endpoint: str, data: dict = None):
         ## just do post request with data to endpoint
         data = {"key": self.api_key, **(data or {})}
+        headers = {"X-Requested-With": "modelslab-py"}
         response = requests.post(
             endpoint,
             json=data,
+            headers=headers,
         )
         if response.status_code != 200:
             raise Exception(f"Request failed with status code {response.status_code}: {response.text}")
@@ -40,6 +42,7 @@ class Client:
             raise ImportError("aiohttp is required for async support. Install with: pip install 'modelslab-py[async]'")
 
         data = {"key": self.api_key, **(data or {})}
+        headers = {"X-Requested-With": "modelslab-py"}
 
         # Create session if it doesn't exist
         if self._session is None:
@@ -47,7 +50,7 @@ class Client:
             self._session = aiohttp.ClientSession(timeout=timeout)
 
         try:
-            async with self._session.post(endpoint, json=data) as response:
+            async with self._session.post(endpoint, json=data, headers=headers) as response:
                 if response.status != 200:
                     text = await response.text()
                     raise Exception(f"Request failed with status code {response.status}: {text}")
