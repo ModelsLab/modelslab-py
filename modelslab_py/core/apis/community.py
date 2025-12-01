@@ -81,3 +81,31 @@ class Community(BaseAPI):
         data = schema.dict(exclude_none=True)
         response = await self.client.async_post(base_endpoint, data=data)
         return response
+
+    def z_image_turbo(self, schema: ZImageTurbo):
+        base_endpoint = self.base_url + "text2img"
+        data = schema.dict(exclude_none=True)
+        data["model_id"] = "z-image-turbo"
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_z_image_turbo(self, schema: ZImageTurbo):
+        base_endpoint = self.base_url + "text2img"
+        data = schema.dict(exclude_none=True)
+        data["model_id"] = "z-image-turbo"
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response
+
+    def flux_2_dev(self, schema: Flux2Dev):
+        base_endpoint = self.base_url + "text2img"
+        data = schema.dict(exclude_none=True)
+        data["model_id"] = "flux-2-dev"
+        response = self.client.post(base_endpoint, data=data)
+        return response
+
+    async def async_flux_2_dev(self, schema: Flux2Dev):
+        base_endpoint = self.base_url + "text2img"
+        data = schema.dict(exclude_none=True)
+        data["model_id"] = "flux-2-dev"
+        response = await self.client.async_post(base_endpoint, data=data)
+        return response

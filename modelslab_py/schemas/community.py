@@ -380,3 +380,45 @@ class QwenText2Image(BaseSchema):
         1,
         description="Number of images to generate (1-2)."
     )
+
+class ZImageTurbo(BaseSchema):
+    """
+    Schema for Z Image Turbo text-to-image generation.
+    """
+    prompt: str = Field(
+        ...,
+        description="Text prompt for image generation."
+    )
+    width: Optional[int] = Field(
+        None,
+        description="Width of the generated image. (max 1488)"
+    )
+    height: Optional[int] = Field(
+        None,
+        description="Height of the generated image. (max 1488)"
+    )
+    samples: Optional[int] = Field(
+        None,
+        description="Number of samples to generate."
+    )
+
+class Flux2Dev(BaseSchema):
+    """
+    Schema for Flux.2 Dev text-to-image generation.
+    """
+    prompt: str = Field(
+        ...,
+        description="Text prompt for image generation."
+    )
+    width: Optional[int] = Field(
+        None,
+        description="Width of the generated image."
+    )
+    height: Optional[int] = Field(
+        None,
+        description="Height of the generated image."
+    )
+    samples: Optional[int] = Field(
+        None,
+        description="Number of samples to generate."
+    )

@@ -147,6 +147,48 @@ print(response)
 
 ### Community Models
 
+#### Z Image Turbo
+
+```python
+from modelslab_py.core.apis.community import Community
+from modelslab_py.schemas.community import ZImageTurbo
+
+client = Client(api_key="your_api_key")
+api = Community(client=client)
+
+schema = ZImageTurbo(
+    prompt="a beautiful sunset over mountains",
+    width=1024,
+    height=1024,
+    samples=1
+)
+
+response = api.z_image_turbo(schema=schema)
+print(response)
+```
+
+#### Flux 2 Dev
+
+```python
+from modelslab_py.core.apis.community import Community
+from modelslab_py.schemas.community import Flux2Dev
+
+client = Client(api_key="your_api_key")
+api = Community(client=client)
+
+schema = Flux2Dev(
+    prompt="a futuristic city at night",
+    width=1024,
+    height=1024,
+    samples=1
+)
+
+response = api.flux_2_dev(schema=schema)
+print(response)
+```
+
+#### Text to Image
+
 ```python
 from modelslab_py.core.apis.community import Community
 from modelslab_py.schemas.community import Text2Image
