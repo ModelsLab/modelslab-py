@@ -10,7 +10,9 @@ from modelslab_py.providers.byteplus.schemas import (
     OmniHumanSchema,
     OmniHuman15Schema,
     SeeDance10ProFastI2VSchema,
-    SeeDance10ProFastT2VSchema
+    SeeDance10ProFastT2VSchema,
+    SeeDream45Schema,
+    SeeDream45I2ISchema
 )
 
 __all__ = [
@@ -25,5 +27,7 @@ __all__ = [
     "OmniHumanSchema",
     "OmniHuman15Schema",
     "SeeDance10ProFastI2VSchema",
-    "SeeDance10ProFastT2VSchema"
+    "SeeDance10ProFastT2VSchema",
+    "SeeDream45Schema",
+    "SeeDream45I2ISchema"
 ]

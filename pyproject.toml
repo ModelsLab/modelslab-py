@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "modelslab_py"
-version = "0.2.2"
+version = "0.2.3"
 description = "ModelsLab's Official Python SDK"
 authors = [
     "Anurag Kanade <anuragkanade54@gmail.com>",
