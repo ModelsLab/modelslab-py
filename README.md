@@ -14,6 +14,9 @@
   <a href="https://pepy.tech/projects/modelslab-py">
     <img src="https://static.pepy.tech/personalized-badge/modelslab-py?period=total&units=international_system&left_color=black&right_color=green&left_text=downloads" alt="PyPI Downloads">
   </a>
+  <a href="https://deepwiki.com/ModelsLab/modelslab-py">
+    <img src="https://img.shields.io/badge/DeepWiki-Open%20Wiki-blue?style=for-the-badge&logo=readthedocs&logoColor=white" alt="DeepWiki">
+  </a>
 </div>
 
 # ModelsLab Python SDK
