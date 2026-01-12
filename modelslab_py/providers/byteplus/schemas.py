@@ -200,3 +200,41 @@ class SeeDance10ProFastT2VSchema(BaseSchema):
         ...,
         description="Text description for video generation"
     )
+
+
+class SeeDream45Schema(BaseSchema):
+    """Schema for SeeDream 4.5 Text-to-Image (seedream-4.5)"""
+
+    model_id: str = Field(
+        default="seedream-4.5",
+        description="Model ID: seedream-4.5"
+    )
+    prompt: str = Field(
+        ...,
+        description="Text description for image generation"
+    )
+    aspect_ratio: str = Field(
+        ...,
+        description="Image dimension ratio: 1:1, 4:3, 3:4, 16:9, 9:16, 3:2, 2:3, 21:9"
+    )
+
+
+class SeeDream45I2ISchema(BaseSchema):
+    """Schema for SeeDream 4.5 Image-to-Image (seedream-4.5-i2i)"""
+
+    model_id: str = Field(
+        default="seedream-4.5-i2i",
+        description="Model ID: seedream-4.5-i2i"
+    )
+    init_image: List[Any] = Field(
+        ...,
+        description="Array of image URLs (JPEG/PNG, up to 10 images)"
+    )
+    prompt: str = Field(
+        ...,
+        description="Text description of desired image transformation"
+    )
+    aspect_ratio: str = Field(
+        ...,
+        description="Image dimension ratio: 1:1, 4:3, 16:9, 9:16, 3:2, 2:3, 21:9"
+    )

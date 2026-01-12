@@ -11,7 +11,9 @@ from modelslab_py.providers.byteplus.schemas import (
     OmniHumanSchema,
     OmniHuman15Schema,
     SeeDance10ProFastI2VSchema,
-    SeeDance10ProFastT2VSchema
+    SeeDance10ProFastT2VSchema,
+    SeeDream45Schema,
+    SeeDream45I2ISchema
 )
 
 
@@ -28,6 +30,8 @@ class BytePlusProvider(BaseAPI):
     MODEL_OMNI_HUMAN_15 = "omni-human-1.5"
     MODEL_SEEDANCE_10_PRO_FAST_I2V = "seedance-1.0-pro-fast-i2v"
     MODEL_SEEDANCE_10_PRO_FAST_T2V = "seedance-1.0-pro-fast-t2v"
+    MODEL_SEEDREAM_45 = "seedream-4.5"
+    MODEL_SEEDREAM_45_I2I = "seedream-4.5-i2i"
 
     def __init__(self, client: Client = None, **kwargs):
         self.client = client
@@ -50,6 +54,8 @@ class BytePlusProvider(BaseAPI):
             "omni_human_15": BytePlusProvider.MODEL_OMNI_HUMAN_15,
             "seedance_10_pro_fast_i2v": BytePlusProvider.MODEL_SEEDANCE_10_PRO_FAST_I2V,
             "seedance_10_pro_fast_t2v": BytePlusProvider.MODEL_SEEDANCE_10_PRO_FAST_T2V,
+            "seedream_45": BytePlusProvider.MODEL_SEEDREAM_45,
+            "seedream_45_i2i": BytePlusProvider.MODEL_SEEDREAM_45_I2I,
         }
 
     def seedream_t2i(self, schema: SeeDreamT2ISchema):
@@ -114,6 +120,18 @@ class BytePlusProvider(BaseAPI):
 
     def seedance_10_pro_fast_t2v(self, schema: SeeDance10ProFastT2VSchema):
         endpoint = self.client.base_url + "v7/video-fusion/text-to-video"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(endpoint, data=data)
+        return response
+
+    def seedream_45(self, schema: SeeDream45Schema):
+        endpoint = self.client.base_url + "v7/images/text-to-image"
+        data = schema.dict(exclude_none=True)
+        response = self.client.post(endpoint, data=data)
+        return response
+
+    def seedream_45_i2i(self, schema: SeeDream45I2ISchema):
+        endpoint = self.client.base_url + "v7/images/image-to-image"
         data = schema.dict(exclude_none=True)
         response = self.client.post(endpoint, data=data)
         return response
